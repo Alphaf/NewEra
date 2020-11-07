@@ -22,8 +22,24 @@ public class Exercice2 {
             listOfArticles.addAll(processLine(line));
         }
         double total = 0;
+        int pommeOfferCounter = 0;
+        int orangeOfferCounter = 0;
         for (String article : listOfArticles) {
-            total += shoppingCartValue.get(article);
+            if (article.equals("Pomme")) {
+                if (pommeOfferCounter == 1) {
+                    pommeOfferCounter = 0;
+                } else {
+                    total += shoppingCartValue.get(article);
+                    pommeOfferCounter++;
+                }
+            } else {
+                if (orangeOfferCounter == 2) {
+                    orangeOfferCounter = 0;
+                } else {
+                    total += shoppingCartValue.get(article);
+                    orangeOfferCounter++;
+                }
+            }
         }
         System.out.println(listOfArticles + " => " + total);
     }
